@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd6a089f005d4f9aba048742a0c097f1" Name="Diagram1">
+        <EntityTypeShape EntityType="GTOModel.Gender" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="GTOModel.Headquarters" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="GTOModel.Medal" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="GTOModel.Normativs" Width="1.5" PointX="5.25" PointY="16.375" />
+        <EntityTypeShape EntityType="GTOModel.NormativSubTypes" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="GTOModel.NormativTypes" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="GTOModel.Personal_data" Width="1.5" PointX="5.25" PointY="10.625" />
+        <EntityTypeShape EntityType="GTOModel.Results" Width="1.5" PointX="7.5" PointY="10.875" />
+        <EntityTypeShape EntityType="GTOModel.Results_people" Width="1.5" PointX="5.75" PointY="5.125" />
+        <EntityTypeShape EntityType="GTOModel.Role" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="GTOModel.Staff" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="GTOModel.Standarts" Width="1.5" PointX="7.75" PointY="2.125" />
+        <EntityTypeShape EntityType="GTOModel.Steps" Width="1.5" PointX="3" PointY="15.25" />
+        <AssociationConnector Association="GTOModel.FK_NormativSubTypes_Gender" />
+        <AssociationConnector Association="GTOModel.FK_Personal_data_Gender" />
+        <AssociationConnector Association="GTOModel.FK_Steps_Gender" />
+        <AssociationConnector Association="GTOModel.FK_Headquarters_Staff" />
+        <AssociationConnector Association="GTOModel.FK_Results_Headquarters" />
+        <AssociationConnector Association="GTOModel.FK_Personal_data_Medal" />
+        <AssociationConnector Association="GTOModel.FK_Results_Peoples_Medal" />
+        <AssociationConnector Association="GTOModel.FK_Results_Peoples_Steps" />
+        <AssociationConnector Association="GTOModel.FK_NormativSubTypes_NormativTypes" />
+        <AssociationConnector Association="GTOModel.FK_Results_NormativSubTypes" />
+        <AssociationConnector Association="GTOModel.FK_Personal_data_Steps" />
+        <AssociationConnector Association="GTOModel.FK_Results_Personal_data" />
+        <AssociationConnector Association="GTOModel.FK_Results_Steps" />
+        <AssociationConnector Association="GTOModel.FK_Staff_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

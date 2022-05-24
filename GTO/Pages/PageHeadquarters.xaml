@@ -1,0 +1,55 @@
+﻿<Page x:Class="GTO.Pages.PageHeadquarters"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GTO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Title="PageHeadquarters"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="15"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Rectangle Fill="LightSteelBlue" Height="75" VerticalAlignment="Top" Width="Auto"></Rectangle>
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+                <Button Margin="2" FontSize="15" Content="Назад" Width="90" Height="25" x:Name="Exit" Click="Exit_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="17" Text="Регион:" Margin="5"></TextBlock>
+                <TextBox x:Name="TBRegion" TextChanged="TBRegion_TextChanged" Margin="5" Width="100"></TextBox>
+                <TextBlock FontSize="17" Text="Город:" Margin="5"></TextBlock>
+                <TextBox x:Name="TBCity" TextChanged="TBCity_TextChanged" Margin="5" Width="100"></TextBox>
+                <TextBlock FontSize="17" Text="Наименование:" Margin="5"></TextBlock>
+                <TextBox x:Name="TBName" TextChanged="TBName_TextChanged" Margin="5" Width="100"></TextBox>
+                <Button x:Name="BtnAddHeadquarters" Click="BtnAddHeadquarters_Click" Margin="5" FontSize="17">Добавить штаб</Button>
+            </StackPanel>
+            <StackPanel>
+                <DataGrid ColumnWidth="*" Margin="5" x:Name="Headquarters" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Регион" Binding="{Binding Region}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Город" Binding="{Binding City}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Улица" Binding="{Binding Street}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" ></DataGridTextColumn>
+                        <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" ></DataGridTextColumn>
+                            <DataGridTemplateColumn x:Name="ColumnEdit" Header="Редактирование">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Изменить" x:Name="BtnEdit" Click="BtnEdit_Click" Margin="5"></Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

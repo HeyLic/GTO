@@ -1,0 +1,977 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище GTOModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Headquarters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="id_staff" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Normativs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Result" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Steps" Type="int" Nullable="false" />
+          <Property Name="id_Medal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NormativSubTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_NormativType" Type="int" Nullable="false" />
+          <Property Name="SubTypeName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="id_gender" Type="int" Nullable="false" />
+          <Property Name="Step" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NormativTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personal_data">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="16" />
+          <Property Name="Age" Type="date" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Med_certificate" Type="bit" Nullable="false" />
+          <Property Name="Passport_number" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_step" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="id_gender" Type="int" Nullable="false" />
+          <Property Name="id_medal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_People" Type="int" Nullable="false" />
+          <Property Name="id_SubType" Type="int" Nullable="false" />
+          <Property Name="Result" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_step" Type="int" />
+          <Property Name="id_Headquarters" Type="int" Nullable="false" />
+          <Property Name="date_of_complete" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results_people">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_people" Type="int" Nullable="false" />
+          <Property Name="id_step" Type="int" Nullable="false" />
+          <Property Name="id_headquarters" Type="int" Nullable="false" />
+          <Property Name="Date_of_complete" Type="date" Nullable="false" />
+          <Property Name="id_results" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Standarts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_step" Type="int" Nullable="false" />
+          <Property Name="id_medal" Type="int" Nullable="false" />
+          <Property Name="Shuttle_run" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="Running" Type="decimal" Precision="1" Scale="1" Nullable="false" />
+          <Property Name="Mixed_movement" Type="decimal" Precision="1" Scale="1" Nullable="false" />
+          <Property Name="Pull_ups" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="Pull_ups_light" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Push_ups" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Gymnastics" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Tourism" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Steps">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Step" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Age" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_gender" Type="int" />
+        </EntityType>
+        <Association Name="FK_Headquarters_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Headquarters" Type="Self.Headquarters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Headquarters">
+              <PropertyRef Name="id_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormativSubTypes_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="NormativSubTypes" Type="Self.NormativSubTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NormativSubTypes">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormativSubTypes_NormativTypes">
+          <End Role="NormativTypes" Type="Self.NormativTypes" Multiplicity="1" />
+          <End Role="NormativSubTypes" Type="Self.NormativSubTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NormativTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NormativSubTypes">
+              <PropertyRef Name="id_NormativType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_data_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personal_data">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_data_Medal">
+          <End Role="Medal" Type="Self.Medal" Multiplicity="1" />
+          <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personal_data">
+              <PropertyRef Name="id_medal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_data_Steps">
+          <End Role="Steps" Type="Self.Steps" Multiplicity="1" />
+          <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steps">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personal_data">
+              <PropertyRef Name="id_step" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Headquarters">
+          <End Role="Headquarters" Type="Self.Headquarters" Multiplicity="1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Headquarters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_Headquarters" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_NormativSubTypes">
+          <End Role="NormativSubTypes" Type="Self.NormativSubTypes" Multiplicity="1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NormativSubTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_SubType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Peoples_Medal">
+          <End Role="Medal" Type="Self.Medal" Multiplicity="1" />
+          <End Role="Normativs" Type="Self.Normativs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Normativs">
+              <PropertyRef Name="id_Medal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Peoples_Steps">
+          <End Role="Steps" Type="Self.Steps" Multiplicity="1" />
+          <End Role="Normativs" Type="Self.Normativs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steps">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Normativs">
+              <PropertyRef Name="id_Steps" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Personal_data">
+          <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Steps">
+          <End Role="Steps" Type="Self.Steps" Multiplicity="0..1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steps">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_step" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Steps_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Steps" Type="Self.Steps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Steps">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище GTOModelContainer">
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Headquarters" EntityType="Self.Headquarters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medal" EntityType="Self.Medal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Normativs" EntityType="Self.Normativs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NormativSubTypes" EntityType="Self.NormativSubTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NormativTypes" EntityType="Self.NormativTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal_data" EntityType="Self.Personal_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Results_people" EntityType="Self.Results_people" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Standarts" EntityType="Self.Standarts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Steps" EntityType="Self.Steps" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Headquarters_Staff" Association="Self.FK_Headquarters_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Headquarters" EntitySet="Headquarters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormativSubTypes_Gender" Association="Self.FK_NormativSubTypes_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="NormativSubTypes" EntitySet="NormativSubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormativSubTypes_NormativTypes" Association="Self.FK_NormativSubTypes_NormativTypes">
+            <End Role="NormativTypes" EntitySet="NormativTypes" />
+            <End Role="NormativSubTypes" EntitySet="NormativSubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_data_Gender" Association="Self.FK_Personal_data_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Personal_data" EntitySet="Personal_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_data_Medal" Association="Self.FK_Personal_data_Medal">
+            <End Role="Medal" EntitySet="Medal" />
+            <End Role="Personal_data" EntitySet="Personal_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_data_Steps" Association="Self.FK_Personal_data_Steps">
+            <End Role="Steps" EntitySet="Steps" />
+            <End Role="Personal_data" EntitySet="Personal_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Headquarters" Association="Self.FK_Results_Headquarters">
+            <End Role="Headquarters" EntitySet="Headquarters" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_NormativSubTypes" Association="Self.FK_Results_NormativSubTypes">
+            <End Role="NormativSubTypes" EntitySet="NormativSubTypes" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Peoples_Medal" Association="Self.FK_Results_Peoples_Medal">
+            <End Role="Medal" EntitySet="Medal" />
+            <End Role="Normativs" EntitySet="Normativs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Peoples_Steps" Association="Self.FK_Results_Peoples_Steps">
+            <End Role="Steps" EntitySet="Steps" />
+            <End Role="Normativs" EntitySet="Normativs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Personal_data" Association="Self.FK_Results_Personal_data">
+            <End Role="Personal_data" EntitySet="Personal_data" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Steps" Association="Self.FK_Results_Steps">
+            <End Role="Steps" EntitySet="Steps" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Role" Association="Self.FK_Staff_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Steps_Gender" Association="Self.FK_Steps_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Steps" EntitySet="Steps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GTOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gender" EntityType="GTOModel.Gender" />
+          <EntitySet Name="Headquarters" EntityType="GTOModel.Headquarters" />
+          <EntitySet Name="Medal" EntityType="GTOModel.Medal" />
+          <EntitySet Name="Normativs" EntityType="GTOModel.Normativs" />
+          <EntitySet Name="NormativSubTypes" EntityType="GTOModel.NormativSubTypes" />
+          <EntitySet Name="NormativTypes" EntityType="GTOModel.NormativTypes" />
+          <EntitySet Name="Personal_data" EntityType="GTOModel.Personal_data" />
+          <EntitySet Name="Results" EntityType="GTOModel.Results" />
+          <EntitySet Name="Results_people" EntityType="GTOModel.Results_people" />
+          <EntitySet Name="Role" EntityType="GTOModel.Role" />
+          <EntitySet Name="Staff" EntityType="GTOModel.Staff" />
+          <EntitySet Name="Standarts" EntityType="GTOModel.Standarts" />
+          <EntitySet Name="Steps" EntityType="GTOModel.Steps" />
+          <AssociationSet Name="FK_NormativSubTypes_Gender" Association="GTOModel.FK_NormativSubTypes_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="NormativSubTypes" EntitySet="NormativSubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_data_Gender" Association="GTOModel.FK_Personal_data_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Personal_data" EntitySet="Personal_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Steps_Gender" Association="GTOModel.FK_Steps_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Steps" EntitySet="Steps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Headquarters_Staff" Association="GTOModel.FK_Headquarters_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Headquarters" EntitySet="Headquarters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Headquarters" Association="GTOModel.FK_Results_Headquarters">
+            <End Role="Headquarters" EntitySet="Headquarters" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_data_Medal" Association="GTOModel.FK_Personal_data_Medal">
+            <End Role="Medal" EntitySet="Medal" />
+            <End Role="Personal_data" EntitySet="Personal_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Peoples_Medal" Association="GTOModel.FK_Results_Peoples_Medal">
+            <End Role="Medal" EntitySet="Medal" />
+            <End Role="Normativs" EntitySet="Normativs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Peoples_Steps" Association="GTOModel.FK_Results_Peoples_Steps">
+            <End Role="Steps" EntitySet="Steps" />
+            <End Role="Normativs" EntitySet="Normativs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormativSubTypes_NormativTypes" Association="GTOModel.FK_NormativSubTypes_NormativTypes">
+            <End Role="NormativTypes" EntitySet="NormativTypes" />
+            <End Role="NormativSubTypes" EntitySet="NormativSubTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_NormativSubTypes" Association="GTOModel.FK_Results_NormativSubTypes">
+            <End Role="NormativSubTypes" EntitySet="NormativSubTypes" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_data_Steps" Association="GTOModel.FK_Personal_data_Steps">
+            <End Role="Steps" EntitySet="Steps" />
+            <End Role="Personal_data" EntitySet="Personal_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Personal_data" Association="GTOModel.FK_Results_Personal_data">
+            <End Role="Personal_data" EntitySet="Personal_data" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Steps" Association="GTOModel.FK_Results_Steps">
+            <End Role="Steps" EntitySet="Steps" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Role" Association="GTOModel.FK_Staff_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NormativSubTypes" Relationship="GTOModel.FK_NormativSubTypes_Gender" FromRole="Gender" ToRole="NormativSubTypes" />
+          <NavigationProperty Name="Personal_data" Relationship="GTOModel.FK_Personal_data_Gender" FromRole="Gender" ToRole="Personal_data" />
+          <NavigationProperty Name="Steps" Relationship="GTOModel.FK_Steps_Gender" FromRole="Gender" ToRole="Steps" />
+        </EntityType>
+        <EntityType Name="Headquarters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="id_staff" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="GTOModel.FK_Headquarters_Staff" FromRole="Headquarters" ToRole="Staff" />
+          <NavigationProperty Name="Results" Relationship="GTOModel.FK_Results_Headquarters" FromRole="Headquarters" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="Medal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personal_data" Relationship="GTOModel.FK_Personal_data_Medal" FromRole="Medal" ToRole="Personal_data" />
+          <NavigationProperty Name="Normativs" Relationship="GTOModel.FK_Results_Peoples_Medal" FromRole="Medal" ToRole="Normativs" />
+        </EntityType>
+        <EntityType Name="Normativs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Result" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_Steps" Type="Int32" Nullable="false" />
+          <Property Name="id_Medal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Medal" Relationship="GTOModel.FK_Results_Peoples_Medal" FromRole="Normativs" ToRole="Medal" />
+          <NavigationProperty Name="Steps" Relationship="GTOModel.FK_Results_Peoples_Steps" FromRole="Normativs" ToRole="Steps" />
+        </EntityType>
+        <EntityType Name="NormativSubTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_NormativType" Type="Int32" Nullable="false" />
+          <Property Name="SubTypeName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="id_gender" Type="Int32" Nullable="false" />
+          <Property Name="Step" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gender" Relationship="GTOModel.FK_NormativSubTypes_Gender" FromRole="NormativSubTypes" ToRole="Gender" />
+          <NavigationProperty Name="NormativTypes" Relationship="GTOModel.FK_NormativSubTypes_NormativTypes" FromRole="NormativSubTypes" ToRole="NormativTypes" />
+          <NavigationProperty Name="Results" Relationship="GTOModel.FK_Results_NormativSubTypes" FromRole="NormativSubTypes" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="NormativTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NormativSubTypes" Relationship="GTOModel.FK_NormativSubTypes_NormativTypes" FromRole="NormativTypes" ToRole="NormativSubTypes" />
+        </EntityType>
+        <EntityType Name="Personal_data">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Med_certificate" Type="Boolean" Nullable="false" />
+          <Property Name="Passport_number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="id_step" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="id_gender" Type="Int32" Nullable="false" />
+          <Property Name="id_medal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="GTOModel.FK_Personal_data_Gender" FromRole="Personal_data" ToRole="Gender" />
+          <NavigationProperty Name="Medal" Relationship="GTOModel.FK_Personal_data_Medal" FromRole="Personal_data" ToRole="Medal" />
+          <NavigationProperty Name="Steps" Relationship="GTOModel.FK_Personal_data_Steps" FromRole="Personal_data" ToRole="Steps" />
+          <NavigationProperty Name="Results" Relationship="GTOModel.FK_Results_Personal_data" FromRole="Personal_data" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_People" Type="Int32" Nullable="false" />
+          <Property Name="id_SubType" Type="Int32" Nullable="false" />
+          <Property Name="Result" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_step" Type="Int32" />
+          <Property Name="id_Headquarters" Type="Int32" Nullable="false" />
+          <Property Name="date_of_complete" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Headquarters" Relationship="GTOModel.FK_Results_Headquarters" FromRole="Results" ToRole="Headquarters" />
+          <NavigationProperty Name="NormativSubTypes" Relationship="GTOModel.FK_Results_NormativSubTypes" FromRole="Results" ToRole="NormativSubTypes" />
+          <NavigationProperty Name="Personal_data" Relationship="GTOModel.FK_Results_Personal_data" FromRole="Results" ToRole="Personal_data" />
+          <NavigationProperty Name="Steps" Relationship="GTOModel.FK_Results_Steps" FromRole="Results" ToRole="Steps" />
+        </EntityType>
+        <EntityType Name="Results_people">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_people" Type="Int32" Nullable="false" />
+          <Property Name="id_step" Type="Int32" Nullable="false" />
+          <Property Name="id_headquarters" Type="Int32" Nullable="false" />
+          <Property Name="Date_of_complete" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_results" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="GTOModel.FK_Staff_Role" FromRole="Role" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Headquarters" Relationship="GTOModel.FK_Headquarters_Staff" FromRole="Staff" ToRole="Headquarters" />
+          <NavigationProperty Name="Role" Relationship="GTOModel.FK_Staff_Role" FromRole="Staff" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Standarts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_step" Type="Int32" Nullable="false" />
+          <Property Name="id_medal" Type="Int32" Nullable="false" />
+          <Property Name="Shuttle_run" Type="Decimal" Nullable="false" Precision="2" Scale="1" />
+          <Property Name="Running" Type="Decimal" Nullable="false" Precision="1" Scale="1" />
+          <Property Name="Mixed_movement" Type="Decimal" Nullable="false" Precision="1" Scale="1" />
+          <Property Name="Pull_ups" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+          <Property Name="Pull_ups_light" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="Push_ups" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="Gymnastics" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Tourism" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Steps">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Step" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="id_gender" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="GTOModel.FK_Steps_Gender" FromRole="Steps" ToRole="Gender" />
+          <NavigationProperty Name="Normativs" Relationship="GTOModel.FK_Results_Peoples_Steps" FromRole="Steps" ToRole="Normativs" />
+          <NavigationProperty Name="Personal_data" Relationship="GTOModel.FK_Personal_data_Steps" FromRole="Steps" ToRole="Personal_data" />
+          <NavigationProperty Name="Results" Relationship="GTOModel.FK_Results_Steps" FromRole="Steps" ToRole="Results" />
+        </EntityType>
+        <Association Name="FK_NormativSubTypes_Gender">
+          <End Type="GTOModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="GTOModel.NormativSubTypes" Role="NormativSubTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NormativSubTypes">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_data_Gender">
+          <End Type="GTOModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="GTOModel.Personal_data" Role="Personal_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personal_data">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Steps_Gender">
+          <End Type="GTOModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="GTOModel.Steps" Role="Steps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Steps">
+              <PropertyRef Name="id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Headquarters_Staff">
+          <End Type="GTOModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="GTOModel.Headquarters" Role="Headquarters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Headquarters">
+              <PropertyRef Name="id_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Headquarters">
+          <End Type="GTOModel.Headquarters" Role="Headquarters" Multiplicity="1" />
+          <End Type="GTOModel.Results" Role="Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Headquarters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_Headquarters" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_data_Medal">
+          <End Type="GTOModel.Medal" Role="Medal" Multiplicity="1" />
+          <End Type="GTOModel.Personal_data" Role="Personal_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personal_data">
+              <PropertyRef Name="id_medal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Peoples_Medal">
+          <End Type="GTOModel.Medal" Role="Medal" Multiplicity="1" />
+          <End Type="GTOModel.Normativs" Role="Normativs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Normativs">
+              <PropertyRef Name="id_Medal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Peoples_Steps">
+          <End Type="GTOModel.Steps" Role="Steps" Multiplicity="1" />
+          <End Type="GTOModel.Normativs" Role="Normativs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steps">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Normativs">
+              <PropertyRef Name="id_Steps" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormativSubTypes_NormativTypes">
+          <End Type="GTOModel.NormativTypes" Role="NormativTypes" Multiplicity="1" />
+          <End Type="GTOModel.NormativSubTypes" Role="NormativSubTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NormativTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NormativSubTypes">
+              <PropertyRef Name="id_NormativType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_NormativSubTypes">
+          <End Type="GTOModel.NormativSubTypes" Role="NormativSubTypes" Multiplicity="1" />
+          <End Type="GTOModel.Results" Role="Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NormativSubTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_SubType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_data_Steps">
+          <End Type="GTOModel.Steps" Role="Steps" Multiplicity="1" />
+          <End Type="GTOModel.Personal_data" Role="Personal_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steps">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Personal_data">
+              <PropertyRef Name="id_step" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Personal_data">
+          <End Type="GTOModel.Personal_data" Role="Personal_data" Multiplicity="1" />
+          <End Type="GTOModel.Results" Role="Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Steps">
+          <End Type="GTOModel.Steps" Role="Steps" Multiplicity="0..1" />
+          <End Type="GTOModel.Results" Role="Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steps">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_step" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Role">
+          <End Type="GTOModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="GTOModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GTOModelContainer" CdmEntityContainer="GTOEntities">
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="GTOModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Headquarters">
+            <EntityTypeMapping TypeName="GTOModel.Headquarters">
+              <MappingFragment StoreEntitySet="Headquarters">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id_staff" ColumnName="id_staff" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medal">
+            <EntityTypeMapping TypeName="GTOModel.Medal">
+              <MappingFragment StoreEntitySet="Medal">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Normativs">
+            <EntityTypeMapping TypeName="GTOModel.Normativs">
+              <MappingFragment StoreEntitySet="Normativs">
+                <ScalarProperty Name="id_Medal" ColumnName="id_Medal" />
+                <ScalarProperty Name="id_Steps" ColumnName="id_Steps" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NormativSubTypes">
+            <EntityTypeMapping TypeName="GTOModel.NormativSubTypes">
+              <MappingFragment StoreEntitySet="NormativSubTypes">
+                <ScalarProperty Name="Step" ColumnName="Step" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
+                <ScalarProperty Name="id_NormativType" ColumnName="id_NormativType" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NormativTypes">
+            <EntityTypeMapping TypeName="GTOModel.NormativTypes">
+              <MappingFragment StoreEntitySet="NormativTypes">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personal_data">
+            <EntityTypeMapping TypeName="GTOModel.Personal_data">
+              <MappingFragment StoreEntitySet="Personal_data">
+                <ScalarProperty Name="id_medal" ColumnName="id_medal" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="id_step" ColumnName="id_step" />
+                <ScalarProperty Name="Passport_number" ColumnName="Passport_number" />
+                <ScalarProperty Name="Med_certificate" ColumnName="Med_certificate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="GTOModel.Results">
+              <MappingFragment StoreEntitySet="Results">
+                <ScalarProperty Name="date_of_complete" ColumnName="date_of_complete" />
+                <ScalarProperty Name="id_Headquarters" ColumnName="id_Headquarters" />
+                <ScalarProperty Name="id_step" ColumnName="id_step" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="id_SubType" ColumnName="id_SubType" />
+                <ScalarProperty Name="id_People" ColumnName="id_People" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results_people">
+            <EntityTypeMapping TypeName="GTOModel.Results_people">
+              <MappingFragment StoreEntitySet="Results_people">
+                <ScalarProperty Name="id_results" ColumnName="id_results" />
+                <ScalarProperty Name="Date_of_complete" ColumnName="Date_of_complete" />
+                <ScalarProperty Name="id_headquarters" ColumnName="id_headquarters" />
+                <ScalarProperty Name="id_step" ColumnName="id_step" />
+                <ScalarProperty Name="id_people" ColumnName="id_people" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="GTOModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="GTOModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Standarts">
+            <EntityTypeMapping TypeName="GTOModel.Standarts">
+              <MappingFragment StoreEntitySet="Standarts">
+                <ScalarProperty Name="Tourism" ColumnName="Tourism" />
+                <ScalarProperty Name="Gymnastics" ColumnName="Gymnastics" />
+                <ScalarProperty Name="Push_ups" ColumnName="Push_ups" />
+                <ScalarProperty Name="Pull_ups_light" ColumnName="Pull_ups_light" />
+                <ScalarProperty Name="Pull_ups" ColumnName="Pull_ups" />
+                <ScalarProperty Name="Mixed_movement" ColumnName="Mixed_movement" />
+                <ScalarProperty Name="Running" ColumnName="Running" />
+                <ScalarProperty Name="Shuttle_run" ColumnName="Shuttle_run" />
+                <ScalarProperty Name="id_medal" ColumnName="id_medal" />
+                <ScalarProperty Name="id_step" ColumnName="id_step" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Steps">
+            <EntityTypeMapping TypeName="GTOModel.Steps">
+              <MappingFragment StoreEntitySet="Steps">
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Step" ColumnName="Step" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

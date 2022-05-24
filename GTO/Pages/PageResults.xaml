@@ -1,0 +1,59 @@
+﻿<Page x:Class="GTO.Pages.PageResults"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GTO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Title="PageResults"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="15"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Rectangle HorizontalAlignment="Center" VerticalAlignment="Center" Fill="LightSteelBlue" Width="700" Height="410" RadiusX="15" RadiusY="15" ></Rectangle>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center">
+            <TextBlock Margin="5" FontSize="35">Добавление результата участника</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Margin="5" FontSize="20">Участник</TextBlock>
+                <ComboBox IsEnabled="False" x:Name="CmbPeople" DisplayMemberPath="NameAdd" SelectedValuePath="id" Margin="5" Width="350">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Margin="5" FontSize="20">Штаб</TextBlock>
+                <ComboBox x:Name="CmbHeadquarters" DisplayMemberPath="Name" SelectedValuePath="id" Margin="5" Width="350">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Margin="5" FontSize="20">Дата сдачи</TextBlock>
+                <DatePicker x:Name="DpDate" Margin="5" Width="200"></DatePicker>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Margin="5" FontSize="20">Категория</TextBlock>
+                <ComboBox SelectionChanged="CmbVidNormativ_SelectionChanged" x:Name="CmbVidNormativ" DisplayMemberPath="TypeName" SelectedValuePath="id" Margin="5" Width="350">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Margin="5" FontSize="20">Норматив</TextBlock>
+                <ComboBox x:Name="CmbNormativ" DisplayMemberPath="SubTypeName" SelectedValuePath="id" Margin="5" Width="350">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Margin="5" FontSize="20">Результат</TextBlock>
+                <TextBox x:Name="TxbResult" Margin="5" Width="175"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnAdd" Click="BtnAdd_Click" Height="40" Width="100" Margin="5">Добавить</Button>
+                <Button x:Name="BtnExit" Click="BtnExit_Click" Height="40" Width="100" Margin="5">Отмена</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

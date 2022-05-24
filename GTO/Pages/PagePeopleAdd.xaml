@@ -1,0 +1,74 @@
+﻿<Page x:Class="GTO.Pages.PagePeopleAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GTO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Title="PagePeopleAdd"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="15"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Rectangle Width="500" Height="450" RadiusX="15" RadiusY="15" Fill="LightSteelBlue" HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Margin="5" FontSize="35"> Добавление участника</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20"  Margin="5" Width="190">Фамилия</TextBlock>
+                <TextBox x:Name="TxbSurname" Text="{Binding Surname}" Margin="5" Width="160"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Имя</TextBlock>
+                <TextBox x:Name="TxbName" Text="{Binding Name}" Margin="5" Width="160"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Отчество</TextBlock>
+                <TextBox x:Name="TxbPatronymic" Text="{Binding Patronymic}" Margin="5" Width="160"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Возраст</TextBlock>
+                <DatePicker SelectedDateChanged="DpAge_SelectedDateChanged" x:Name="DpAge" SelectedDate="{Binding Age}" Margin="5" Width="160"></DatePicker>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="145">Ступень</TextBlock>
+                <ComboBox IsEnabled="False" x:Name="CmbStep" SelectedValue="{Binding id_step}" SelectedValuePath="id" Margin="5" Width="80"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Пол</TextBlock>
+                <ComboBox SelectionChanged="CmbGender_SelectionChanged" Margin="5" Width="80" SelectedValue="{Binding id_gender}" x:Name="CmbGender" DisplayMemberPath="Name" SelectedValuePath="id"></ComboBox>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Orientation="Horizontal">
+                <ComboBox Visibility="Collapsed" SelectedValue="{Binding id_medal}" x:Name="CmbMedal" SelectedValuePath="id"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="270">Особая категория участника</TextBlock>
+                <CheckBox x:Name="ChbMed" IsChecked="{Binding Med_certificate}"  ></CheckBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Номер паспорта</TextBlock>
+                <TextBox x:Name="TxbNumPassport" Text="{Binding Passport_number}" Margin="5" Width="160"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Электронная почта</TextBlock>
+                <TextBox x:Name="TxbEmail" Text="{Binding Email}"  Margin="5" Width="160"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="5" Width="190">Город</TextBlock>
+                <TextBox x:Name="TxbCity" Text="{Binding City}" Margin="5" Width="160"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button  x:Name="BtnAdd" Click="BtnAdd_Click" Margin="5" Height="30" Width="100">Добавить</Button>
+                <Button x:Name="BtnExit" Click="BtnExit_Click" Margin="5" Width="100">Отмена</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

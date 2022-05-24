@@ -1,0 +1,34 @@
+﻿<Page x:Class="GTO.Pages.PageAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GTO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAdmin"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="15"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Rectangle Fill="LightSteelBlue" Height="40" VerticalAlignment="Top" Width="Auto"></Rectangle>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                    <Button x:Name="Btn_Staff" Click="Btn_Staff_Click" Margin="2" FontSize="15" Width="100" Height="25" Content="Персонал"></Button>
+                    <Button x:Name="Btn_Headquarters" Click="Btn_Headquarters_Click" Margin="2" FontSize="15" Width="90" Height="25" Content="Штабы"></Button>
+                    <Button x:Name="Btn_Peoples" Click="Btn_Peoples_Click" Margin="2" FontSize="15" Visibility="Hidden" Width="90" Height="25" Content="Люди"></Button>
+                </StackPanel>
+                <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5" FontSize="15" Content="Выход" Width="90" Height="25" x:Name="Exit" Click="Exit_Click"></Button>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" >
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Page>
